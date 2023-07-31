@@ -1,10 +1,11 @@
 :root {
-    --hue: 215;
-    --sat: 90%;
-    --light: 60%;
+    --hue: 340;
+    --sat: 60%;
+    --light: 40%;
     --main-colour: hsl(var(--hue),var(--sat),var(--light));
-    --dark-colour: hsl(var(--hue), calc(var(--sat) * 0.2) , calc(var(--light) * 0.2));
-    --highlight-colour: hsl(var(--hue), calc(var(--sat) * 0.9), calc(var(--light) * 0.8));
+    --dark-colour: hsl(var(--hue), calc(var(--sat) * 0.2) , calc(var(--light) * 0.4));
+    --highlight-colour: hsl(var(--hue), calc(var(--sat) * 1.5), calc(var(--light) * 0.8));
+    --contrast-colour: hsl(var(--hue) , calc(var(--sat) * 2), calc(var(--light) * 0.9));
 }
 /*
   Josh's Custom CSS Reset
@@ -23,7 +24,6 @@
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    background-color: hsl(90, 17%, 98%);
 }
 img, picture, video, canvas, svg {
     display: block;
@@ -41,13 +41,24 @@ p, h1, h2, h3, h4, h5, h6 {
 /*
   End Josh's Custom CSS Reset
 */
+body {
+    background-color: hsl(90, 17%, 98%);
+}
 #header-container,
 #main {
     margin-left: auto;
     margin-right: auto;
 }
+#header-container,
+#quote,
+#footer,
+.cta-box {
+    background-image: url(./img/bg.png);
+    background-attachment: fixed;
+    background-position: bottom;
+    background-size: cover;
+}
 #header-container {
-    background-color: var(--dark-colour);
     padding-bottom: 120px;
 }
 #hero {
@@ -64,10 +75,17 @@ p, h1, h2, h3, h4, h5, h6 {
     gap: 28px;
     align-items: baseline;
     justify-content: space-between;
-    padding: 18px 0;
+    /* padding: 10px 0; */
 }
 li.logo {
     margin-right: auto;
+}
+.logo img {
+    height: 50px;
+    display: inline;
+    margin-right: 10px;
+    object-fit: cover;
+    transform: translateY(15px);
 }
 .header-link a {
     text-decoration: none;
@@ -96,8 +114,17 @@ li.logo {
     display: flex;
     justify-content: center;
 }
+.hero-img img:hover {
+    animation: gelatine .5s infinite;
+}
+@keyframes gelatine {
+    from, to { transform: scale(1, 1); }
+    25% { transform: scale(0.9, 1.1); }
+    50% { transform: scale(1.1, 0.9); }
+    75% { transform: scale(0.95, 1.05); }
+}
 .hero-img img{
-    object-fit: cover;
+    object-fit: contain;
     min-width: 300px;
     height: 240px;
 }
@@ -123,7 +150,7 @@ button {
     background-color: var(--main-colour);
     font-weight: 700;
     font-size: 18px;
-    color: hsl(220, 19%, 91%);
+    color: hsl(90, 17%, 98%);
     padding: 6px 35px;
     border-radius: 8px;
     border: none;
@@ -133,6 +160,7 @@ button:hover {
     background-color: var(--highlight-colour);
     cursor: pointer;
     transition: .2s ease;
+    color: hsl(90, 17%, 98%);
 }
 #main {
     margin-left: auto;
@@ -145,7 +173,7 @@ button:hover {
     text-align: center;
     font-weight: 900;
     font-size: 36px;
-    color: hsl(215, 28%, 17%);
+    color: var(--dark-colour);
     line-height: 1;
 }
 #gallery {
@@ -166,13 +194,10 @@ button:hover {
 #gallery p {
     text-align: center;
     font-size: 18px;
-    color: hsl(215, 28%, 17%);
+    color: var(--dark-colour);
     width: 180px;
     margin-left: auto;
     margin-right: auto;
-}
-#quote {
-    background-color: hsl(220, 19%, 91%);
 }
 .quote-main {
     display: flex;
@@ -185,14 +210,14 @@ button:hover {
 }
 .quote-text {
     font-size: 36px;
-    color:hsl(215, 28%, 17%);
+    color:hsl(220, 19%, 91%);
     font-weight: 300;
     font-style: italic;
 }
 .quote-origin {
     font-size: 24px;
     font-weight: 900;
-    color: hsl(215, 28%, 17%);
+    color: hsl(90, 17%, 98%);
     align-self: flex-end;
     transform: translateY(-10px);
 }
@@ -210,18 +235,22 @@ button:hover {
     justify-content: space-around;
     align-items: center;
     gap: 50px;
-    background-color: var(--main-colour);
     border-radius: 10px;
-}
-.cta-box button {
-    border: 2px solid hsl(90, 17%, 98%);
 }
 #footer
 {
-    background-color: var(--dark-colour);
     padding-top: 30px;
     padding-bottom: 30px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
 }
 #footer p {
     text-align: center;
+    flex: 1;
+    max-width: 200px;
+}
+#footer img {
+    width: 30px;
+    flex: 1;
 }
