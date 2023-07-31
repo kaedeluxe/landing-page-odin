@@ -1,3 +1,11 @@
+:root {
+    --hue: 215;
+    --sat: 90%;
+    --light: 60%;
+    --main-colour: hsl(var(--hue),var(--sat),var(--light));
+    --dark-colour: hsl(var(--hue), calc(var(--sat) * 0.2) , calc(var(--light) * 0.2));
+    --highlight-colour: hsl(var(--hue), calc(var(--sat) * 0.9), calc(var(--light) * 0.8));
+}
 /*
   Josh's Custom CSS Reset
   https://www.joshwcomeau.com/css/custom-css-reset/
@@ -10,11 +18,12 @@
     margin: 0;
     font-family: 'Noto Sans JP', sans-serif;
     font-family: 'Roboto', sans-serif;
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 body {
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    background-color: hsl(90, 17%, 98%);
 }
 img, picture, video, canvas, svg {
     display: block;
@@ -32,34 +41,23 @@ p, h1, h2, h3, h4, h5, h6 {
 /*
   End Josh's Custom CSS Reset
 */
-#content,
+#header-container,
 #main {
     margin-left: auto;
     margin-right: auto;
 }
-
-#content {
-    background-color: hsl(215, 28%, 17%);
+#header-container {
+    background-color: var(--dark-colour);
     padding-bottom: 120px;
 }
-
-#main {
-    margin-left: auto;
-    margin-right: auto;
-    width: 72vw;
-    padding-bottom: 100px;
-}
-
 #hero {
     margin-left: auto;
     margin-right: auto;
     width: 72vw;
-
 }
 #header {
     width: 100%;
 }
-
 #header ul {
     display: flex;
     list-style-type: none;
@@ -71,65 +69,58 @@ p, h1, h2, h3, h4, h5, h6 {
 li.logo {
     margin-right: auto;
 }
-
 .header-link a {
     text-decoration: none;
     color: hsl(220, 19%, 91%);
     font-size: 18px;
 }
-.logo a {
+.logo a,
+.cta-box h2 {
     color: hsl(90, 17%, 98%);
     font-size: 24px;
     text-decoration: none;
     font-weight: 900;
 }
-#main-hero {
+#hero-container {
     margin-top: 100px;
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
     align-items: center;
 }
-
 .hero-text {
     flex: 6;
 }
-
 .hero-img {
     flex: 7;
-    /* background-color: grey; */
     display: flex;
     justify-content: center;
-    /* align-items: center; */
 }
 .hero-img img{
     object-fit: cover;
     min-width: 300px;
     height: 240px;
 }
-
 .hero-img p {
     flex: 1;
     text-align: center;
     color: hsl(220, 19%, 91%);
-
 }
-
 .hero-text h1 {
     font-size: 48px;
     color: hsl(90, 17%, 98%);
     line-height: 1;
     padding-bottom: 10px;
 }
-
-.hero-text p {
+.hero-text p,
+.cta-box p,
+#footer p {
     font-size: 18px;
     color: hsl(220, 19%, 91%);
 }
-
 button {
     margin-top: 10px;
-    background-color: hsl(217, 91%, 59%);
+    background-color: var(--main-colour);
     font-weight: 700;
     font-size: 18px;
     color: hsl(220, 19%, 91%);
@@ -138,13 +129,17 @@ button {
     border: none;
     transition: .5s ease;
 }
-
 button:hover {
-    background-color: hsl(217, 88%, 42%);
+    background-color: var(--highlight-colour);
     cursor: pointer;
     transition: .2s ease;
 }
-
+#main {
+    margin-left: auto;
+    margin-right: auto;
+    width: 58vw;
+    padding-bottom: 100px;
+}
 #main h2 {
     padding: 45px 0;
     text-align: center;
@@ -153,14 +148,11 @@ button:hover {
     color: hsl(215, 28%, 17%);
     line-height: 1;
 }
-
 #gallery {
     display: flex;
     flex-wrap: wrap;
-    gap: 50px;
     justify-content: space-between;
 }
-
 #gallery img {
     object-fit: cover;
     flex: 1;
@@ -168,10 +160,9 @@ button:hover {
     margin-right: auto;
     height: 180px;
     width: 180px;
-    border: 4px solid hsl(217, 91%, 59%);
+    border: 4px solid var(--main-colour);
     border-radius: 20px;
 }
-
 #gallery p {
     text-align: center;
     font-size: 18px;
@@ -179,4 +170,58 @@ button:hover {
     width: 180px;
     margin-left: auto;
     margin-right: auto;
+}
+#quote {
+    background-color: hsl(220, 19%, 91%);
+}
+.quote-main {
+    display: flex;
+    flex-direction: column;
+    padding-top: 100px;
+    padding-bottom: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 55vw;
+}
+.quote-text {
+    font-size: 36px;
+    color:hsl(215, 28%, 17%);
+    font-weight: 300;
+    font-style: italic;
+}
+.quote-origin {
+    font-size: 24px;
+    font-weight: 900;
+    color: hsl(215, 28%, 17%);
+    align-self: flex-end;
+    transform: translateY(-10px);
+}
+#cta {
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.cta-box {
+    display: flex;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 72vw;
+    justify-content: space-around;
+    align-items: center;
+    gap: 50px;
+    background-color: var(--main-colour);
+    border-radius: 10px;
+}
+.cta-box button {
+    border: 2px solid hsl(90, 17%, 98%);
+}
+#footer
+{
+    background-color: var(--dark-colour);
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+#footer p {
+    text-align: center;
 }
